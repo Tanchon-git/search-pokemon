@@ -74,7 +74,7 @@ export function PokemonDetail({ pokemon }: { pokemon: Pokemon }) {
           <div>
             <h3 className="font-semibold mt-4">Fast Attacks</h3>
             <ul className="text-sm list-disc ml-5">
-              {pokemon.attacks.fast.map((a: any) => (
+              {pokemon.attacks.fast.map((a: Attack) => (
                 <li key={a.name}>
                   {a.name} ({a.type}, {a.damage} dmg)
                 </li>
@@ -85,7 +85,7 @@ export function PokemonDetail({ pokemon }: { pokemon: Pokemon }) {
           <div>
             <h3 className="font-semibold mt-4">Special Attacks</h3>
             <ul className="text-sm list-disc ml-5">
-              {pokemon.attacks.special.map((a: any) => (
+              {pokemon.attacks.special.map((a: Attack) => (
                 <li key={a.name}>
                   {a.name} ({a.type}, {a.damage} dmg)
                 </li>
@@ -93,11 +93,11 @@ export function PokemonDetail({ pokemon }: { pokemon: Pokemon }) {
             </ul>
           </div>
 
-          {pokemon.evolutions?.length > 0 && (
+          {pokemon.evolutions && pokemon.evolutions?.length > 0 && (
             <div>
               <h3 className="font-semibold mt-4">Evolutions</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-2">
-                {pokemon.evolutions.map((evo: any) => (
+                {pokemon.evolutions.map((evo: Evolution) => (
                   <a
                     key={evo.id}
                     href={`/pokemon/${evo.name}`}
