@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface Attack {
   name: string;
@@ -36,7 +37,7 @@ export function PokemonDetail({ pokemon }: { pokemon: Pokemon }) {
   return (
     <div className="bg-white shadow-md rounded-md overflow-hidden animate-fade-in">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6 p-6">
-        <img
+        <Image
           src={pokemon.image}
           alt={pokemon.name}
           className="w-40 h-40 object-contain"
@@ -103,7 +104,7 @@ export function PokemonDetail({ pokemon }: { pokemon: Pokemon }) {
                     href={`/pokemon/${evo.name}`}
                     className="text-center hover:underline"
                   >
-                    <img
+                    <Image
                       src={evo.image}
                       alt={evo.name}
                       className="w-20 h-20 mx-auto object-contain"
