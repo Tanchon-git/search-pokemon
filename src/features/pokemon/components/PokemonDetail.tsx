@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 interface Attack {
@@ -32,14 +31,14 @@ interface Pokemon {
 }
 
 export function PokemonDetail({ pokemon }: { pokemon: Pokemon }) {
-  const router = useRouter();
-
   return (
     <div className="bg-white shadow-md rounded-md overflow-hidden animate-fade-in">
       <div className="flex flex-col md:flex-row items-center md:items-start gap-6 p-6">
         <Image
           src={pokemon.image}
           alt={pokemon.name}
+          width={500}
+          height={500}
           className="w-40 h-40 object-contain"
         />
         <div className="flex-1 space-y-2">
@@ -107,6 +106,8 @@ export function PokemonDetail({ pokemon }: { pokemon: Pokemon }) {
                     <Image
                       src={evo.image}
                       alt={evo.name}
+                      width={500}
+                      height={500}
                       className="w-20 h-20 mx-auto object-contain"
                     />
                     <p className="text-sm">{evo.name}</p>
