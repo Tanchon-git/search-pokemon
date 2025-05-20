@@ -16,16 +16,17 @@ export async function generateStaticParams() {
   ];
 }
 
-export async function generateMetadata(props: {
-  params: { name: string };
-}): Promise<Metadata> {
+interface PageProps {
+  params: Promise<{ name: string }>;
+}
+
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const { name } = await props.params;
 
   return {
     title: `Pokemon: ${name}`,
   };
 }
-
 const GET_POKEMON_BY_NAME = gql`
   query GetPokemon($name: String!) {
     pokemon(name: $name) {
@@ -59,7 +60,7 @@ const GET_POKEMON_BY_NAME = gql`
   }
 `;
 
-export default async function PokemonPage(props: { params: { name: string } }) {
+export default async function PokemonPage(props: PageProps) {
   const { name } = await props.params;
 
   const client = initializeApollo();
